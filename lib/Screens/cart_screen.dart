@@ -15,6 +15,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
+        leading: Icon(Icons.arrow_back),
         title: Center(
             child: Text(
           "Cart",
@@ -92,6 +93,100 @@ class _CartScreenState extends State<CartScreen> {
           //     },
           //   ),
           // )
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "select Item:",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Subtotal:",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Discount(%20)",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Total:",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "3",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "\$589.00",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "\$117.80",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "\$471.20",
+                      style: TextStyle(color: purple, fontSize: 20),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Text(
+              'Checkout',
+              style: TextStyle(color: Colors.white),
+            ),
+            style: ElevatedButton.styleFrom(
+              // padding: EdgeInsets.symmetric(vertical: 16),
+              backgroundColor: purple,
+
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
         ),
       ]),
     );
