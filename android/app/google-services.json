@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "335555253662",
+    "project_id": "ecommerceapp-968fe",
+    "storage_bucket": "ecommerceapp-968fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335555253662:android:eb0f27fc8e3cdaa2ddf28f",
+        "android_client_info": {
+          "package_name": "com.example.hackathon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBNfEP0ExkGX_1D5HVoEOTnLxAEqkCDP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
