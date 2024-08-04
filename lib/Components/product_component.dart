@@ -74,9 +74,17 @@ class _ProductComponentState extends State<ProductComponent> {
               Text(
                 widget.product.name,
               ),
-              Text(
-                widget.product.description,
-                style: TextStyle(color: Colors.grey),
+              Row(
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                  Text(
+                    widget.product.description,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
               ),
               Text(
                 widget.product.price,

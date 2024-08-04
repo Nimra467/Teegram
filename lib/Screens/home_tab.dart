@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/Components/product_component.dart';
 import 'package:hackathon/Components/product_model.dart';
+import 'package:hackathon/Screens/category_screen.dart';
 import 'package:hackathon/Screens/popular_product.dart';
+import 'package:hackathon/utils/colors.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
@@ -24,47 +26,173 @@ class HomeTab extends StatelessWidget {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Popular products"),
-              TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => PopularProduct()),
-                    );
-                  },
-                  child: Text("See All"))
-            ],
-          ),
-          Row(
-            children: products
-                .map((product) => ProductComponent(
-                      product: product,
-                    ))
-                .toList(),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Latest Products"),
-              TextButton(onPressed: () {}, child: Text("See All")),
-            ],
-          ),
-          Container(
-            child: ListTile(
-              leading: Image.asset("Assets/images/headphone.png"),
-              title: Text("Headphone Holder"),
-              subtitle: Text("\$34.90"),
-              trailing: Text(("1446")),
-            ),
-          )
-        ]),
+      appBar: AppBar(
+        title: Center(
+            child: Text(
+          "Home",
+          style: TextStyle(fontSize: 16),
+        )),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
+      backgroundColor: Colors.grey.shade100,
+      body: ListView(children: [
+        Container(
+          margin: EdgeInsets.all(10),
+          height: MediaQuery.of(context).size.height * 0.2,
+          width: MediaQuery.of(context).size.width * 0.5,
+          decoration: BoxDecoration(
+              color: purple, borderRadius: BorderRadius.circular(15)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Nike Air Max 270",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
+                    ),
+                    Text(
+                      "Men's shoes",
+                      style: TextStyle(
+                        color: Color.fromRGBO(156, 160, 175, 1),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "\$ 290.00",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 18),
+                    )
+                  ],
+                ),
+              ),
+              Image.asset(
+                "Assets/images/shoe.png",
+              )
+            ],
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Category"),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CategoryScreen()),
+                  );
+                },
+                child: Text("See All"))
+          ],
+        ),
+        DefaultTabController(
+          length: 5,
+          initialIndex: 0,
+          child: Column(
+            children: [
+              Container(
+                child: TabBar(
+                  labelStyle: TextStyle(color: Colors.white),
+                  isScrollable: true,
+                  indicator: BoxDecoration(
+                    // shape: BoxShape.rectangle,
+                    color: purple,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  tabs: [
+                    Tab(
+                      text: "All",
+                    ),
+                    Tab(
+                      text: "Electronic",
+                    ),
+                    Tab(
+                      text: "Fashion",
+                    ),
+                    Tab(
+                      text: "Shoes",
+                    ),
+                    Tab(
+                      text: "Furniture",
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                width: MediaQuery.of(context).size.width,
+                child: TabBarView(children: [
+                  Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Popular products"),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PopularProduct()),
+                              );
+                            },
+                            child: Text("See All"))
+                      ],
+                    ),
+                    Row(
+                      children: products
+                          .map((product) => ProductComponent(
+                                product: product,
+                              ))
+                          .toList(),
+                    ),
+                  ]),
+                  Text("Home"),
+                  Text("Home"),
+                  Text("Home"),
+                  Text("Home"),
+                ]),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Latest Products"),
+            TextButton(onPressed: () {}, child: Text("See All")),
+          ],
+        ),
+        Container(
+          child: ListTile(
+            leading: Image.asset("Assets/images/headphone.png"),
+            title: Text("Headphone Holder"),
+            subtitle: Text(
+              "\$34.90",
+              style:
+                  TextStyle(color: Colors.purple, fontWeight: FontWeight.w700),
+            ),
+            trailing: Text(
+              "(1446)",
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+        )
+      ]),
     );
   }
 }

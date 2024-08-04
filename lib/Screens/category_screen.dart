@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/Components/category_component.dart';
+import 'package:hackathon/Screens/cart_screen.dart';
 import 'package:hackathon/Screens/home_tab.dart';
 import 'package:hackathon/Screens/wishlist.dart';
 import 'package:hackathon/utils/colors.dart';
@@ -17,30 +18,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
   List widgetList = [
     HomeTab(),
     WishlistScreen(),
-    Text("Home"),
+    CartScreen(),
     Text("Home"),
   ];
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: purple,
-        unselectedItemColor: Colors.grey,
-        onTap: (index) {
-          setState(() {
-            myIndex = index;
-          });
-        },
-        currentIndex: myIndex,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_outline), label: "favorite"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_outlined), label: "cart"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_2_outlined), label: "user")
-        ],
-      ),
       appBar: AppBar(
         title: Center(
             child: Text(
@@ -195,7 +177,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
           ],
         ),
-        // widgetList[myIndex]
+      
       ]),
     );
   }

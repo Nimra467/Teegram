@@ -34,7 +34,7 @@ class PopularProduct extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-          child: Column(
+          child: Row(
         children: products
             .map((product) => ProductComponent(
                   product: product,

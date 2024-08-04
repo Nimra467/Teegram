@@ -6,6 +6,7 @@ import 'package:hackathon/utils/colors.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final Product product;
+  int count = 0;
   ProductDetailScreen({required this.product});
 
   @override
@@ -13,12 +14,12 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  late bool isInWishlist;
+  late bool isInCart;
 
   @override
   void initState() {
     super.initState();
-    isInWishlist = wishlist.contains(widget.product);
+    isInCart = cart.contains(widget.product);
   }
 
   @override
@@ -93,10 +94,19 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CartScreenState()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => CartScreen()),
+                // );
+                setState(() {
+                  // isInCart ? count+=1 :count,
+                  if (isInCart) {
+                    cart.remove(widget.product);
+                  } else {
+                    cart.add(widget.product);
+                  }
+                  isInCart = !isInCart;
+                });
               },
               child: Text(
                 'ADD TO CART',
