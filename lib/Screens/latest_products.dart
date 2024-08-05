@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hackathon/Components/product_component.dart';
 import 'package:hackathon/Components/product_model.dart';
 
-class PopularProduct extends StatelessWidget {
-  const PopularProduct({super.key});
+class LatestProduct extends StatelessWidget {
+  const LatestProduct({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +34,12 @@ class PopularProduct extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-          child: Padding(
-        padding: const EdgeInsets.only(left: 10.0),
-        child: Row(
-          children: products
-              .map((product) => ProductComponent(
-                    product: product,
-                  ))
-              .toList(),
-        ),
+          child: Row(
+        children: products
+            .map((product) => ProductComponent(
+                  product: product,
+                ))
+            .toList(),
       )),
     );
   }

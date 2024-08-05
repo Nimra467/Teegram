@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/Components/product_model.dart';
+import 'package:hackathon/Screens/cart_screen.dart';
 
 class WishlistScreen extends StatefulWidget {
   @override
@@ -16,6 +17,16 @@ class _WishlistScreenState extends State<WishlistScreen> {
             "WishList",
             style: TextStyle(fontSize: 16),
           )),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CartScreen()),
+                  );
+                },
+                icon: Icon(Icons.shopping_cart_outlined))
+          ],
         ),
         body: ListView(children: [
           ...wishlist.map((product) => ListTile(

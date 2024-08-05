@@ -36,69 +36,82 @@ class HomeTab extends StatelessWidget {
       ),
       backgroundColor: Colors.grey.shade100,
       body: ListView(children: [
-        Container(
-          margin: EdgeInsets.all(10),
-          height: MediaQuery.of(context).size.height * 0.2,
-          width: MediaQuery.of(context).size.width * 0.5,
-          decoration: BoxDecoration(
-              color: purple, borderRadius: BorderRadius.circular(15)),
+        Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              height: MediaQuery.of(context).size.height * 0.2,
+              width: MediaQuery.of(context).size.width * 0.9,
+              decoration: BoxDecoration(
+                  color: purple, borderRadius: BorderRadius.circular(15)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Nike Air Max 270",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16),
+                        ),
+                        Text(
+                          "Men's shoes",
+                          style: TextStyle(
+                            color: Color.fromRGBO(156, 160, 175, 1),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "\$ 290.00",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 18),
+                        )
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    child: Image.asset(
+                      "Assets/images/shoe.png",
+                      // height: 300,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Nike Air Max 270",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16),
-                    ),
-                    Text(
-                      "Men's shoes",
-                      style: TextStyle(
-                        color: Color.fromRGBO(156, 160, 175, 1),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "\$ 290.00",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 18),
-                    )
-                  ],
-                ),
+              Text(
+                "Category",
+                style: TextStyle(fontWeight: FontWeight.w600),
               ),
-              Image.asset(
-                "Assets/images/shoe.png",
-              )
+              TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CategoryScreen()),
+                    );
+                  },
+                  child: Text("See All"))
             ],
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Category"),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CategoryScreen()),
-                  );
-                },
-                child: Text("See All"))
-          ],
         ),
         DefaultTabController(
           length: 5,
@@ -112,8 +125,10 @@ class HomeTab extends StatelessWidget {
                   indicator: BoxDecoration(
                     // shape: BoxShape.rectangle,
                     color: purple,
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(10),
                   ),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicatorPadding: EdgeInsets.only(bottom: 4),
                   tabs: [
                     Tab(
                       text: "All",
@@ -153,18 +168,57 @@ class HomeTab extends StatelessWidget {
                             child: Text("See All"))
                       ],
                     ),
-                    Row(
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Row(
+                        children: products
+                            .map((product) => ProductComponent(
+                                  product: product,
+                                ))
+                            .toList(),
+                      ),
+                    ),
+                  ]),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Row(
                       children: products
                           .map((product) => ProductComponent(
                                 product: product,
                               ))
                           .toList(),
                     ),
-                  ]),
-                  Text("Home"),
-                  Text("Home"),
-                  Text("Home"),
-                  Text("Home"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Row(
+                      children: products
+                          .map((product) => ProductComponent(
+                                product: product,
+                              ))
+                          .toList(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Row(
+                      children: products
+                          .map((product) => ProductComponent(
+                                product: product,
+                              ))
+                          .toList(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Row(
+                      children: products
+                          .map((product) => ProductComponent(
+                                product: product,
+                              ))
+                          .toList(),
+                    ),
+                  ),
                 ]),
               ),
             ],
@@ -174,21 +228,32 @@ class HomeTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Latest Products"),
-            TextButton(onPressed: () {}, child: Text("See All")),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PopularProduct()),
+                  );
+                },
+                child: Text("See All")),
           ],
         ),
         Container(
-          child: ListTile(
-            leading: Image.asset("Assets/images/headphone.png"),
-            title: Text("Headphone Holder"),
-            subtitle: Text(
-              "\$34.90",
-              style:
-                  TextStyle(color: Colors.purple, fontWeight: FontWeight.w700),
-            ),
-            trailing: Text(
-              "(1446)",
-              style: TextStyle(color: Colors.grey),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              tileColor: Colors.white,
+              leading: Image.asset("Assets/images/headphone.png"),
+              title: Text("Headphone Holder"),
+              subtitle: Text(
+                "\$34.90",
+                style: TextStyle(
+                    color: Colors.purple, fontWeight: FontWeight.w700),
+              ),
+              trailing: Text(
+                "(1446)",
+                style: TextStyle(color: Colors.grey),
+              ),
             ),
           ),
         )

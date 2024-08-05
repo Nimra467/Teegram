@@ -50,8 +50,8 @@ class _ProductComponentState extends State<ProductComponent> {
                 children: [
                   IconButton(
                     icon: Icon(
-                      isInWishlist ? Icons.favorite : Icons.favorite_border,
-                      color: isInWishlist ? Colors.red : Colors.grey,
+                      isInWishlist ? Icons.favorite : Icons.favorite,
+                      color: isInWishlist ? Colors.red : Colors.grey.shade300,
                     ),
                     onPressed: () {
                       setState(() {
@@ -88,7 +88,7 @@ class _ProductComponentState extends State<ProductComponent> {
               ),
               Text(
                 widget.product.price,
-                style: TextStyle(color: purple),
+                style: TextStyle(color: purple, fontSize: 18),
               )
             ],
           ),

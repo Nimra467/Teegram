@@ -119,8 +119,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ),
                 Expanded(
                   child: CategoryComponent(
-                    categoryImage: "Assets/images/sporticon.png",
+                    categoryImage: "Assets/images/sportIcon.png",
                     categoryName: "Sports",
+                    color: purple,
                   ),
                 ),
                 Expanded(
@@ -177,7 +178,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
           ],
         ),
-      
       ]),
     );
   }

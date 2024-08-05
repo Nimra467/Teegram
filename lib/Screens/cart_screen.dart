@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/Components/product_model.dart';
+import 'package:hackathon/Screens/wishlist.dart';
 import 'package:hackathon/utils/colors.dart';
 
 class CartScreen extends StatefulWidget {
@@ -15,22 +16,34 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
         title: Center(
             child: Text(
           "Cart",
           style: TextStyle(fontSize: 16),
         )),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart_outlined))
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WishlistScreen()),
+              );
+            },
+            icon: Icon(Icons.favorite_outline),
+          ),
         ],
       ),
       body: ListView(children: [
         ...cart.map(
-          (product) => Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+          (product) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(5)),
+              // child:
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -61,19 +74,23 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   IconButton(
                     icon: Icon(
-                      Icons.remove,
+                      Icons.delete,
                       color: Colors.black,
                     ),
                     onPressed: () {
                       // Remove from cart
-                      wishlist.remove(product);
+                      cart.remove(product);
                       // Refresh the UI
                       (context as Element).reassemble();
                     },
                   ),
-                  Image.asset(product.productImage)
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Image.asset(product.productImage),
+                  )
                 ],
               ),
+              // ),
             ),
           ),
           // ListTile(
@@ -140,7 +157,7 @@ class _CartScreenState extends State<CartScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "3",
+                      "1",
                       style: TextStyle(color: Colors.black),
                     ),
                     SizedBox(
